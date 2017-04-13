@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SQLitePerf</string>
+    <string name="run_tests">Run Tests</string>
+    <string name="open_drawer">Open Options Drawer</string>
+    <string name="close_drawer">Close Options Drawer</string>
+    <string name="navigation_header_title">Benchmarks</string>
+    <string name="run_tests_item_title">Run Test</string>
+    <string name="run_tests_item_title_condensed">Run</string>
+
+    <string name="insert_performance">Inserts</string>
+    <string name="insert_performance_transactions_only">Inserts (Transactions)</string>
+    <string name="insert_performance_no_transactions">Inserts (No Transactions)</string>
+    <string name="insert_performance_batch_only">Inserts (Batch)</string>
+</resources>

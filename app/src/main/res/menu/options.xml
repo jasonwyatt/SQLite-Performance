@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/benchmark_inserts"
+        android:title="@string/insert_performance"
+        android:checkable="true"
+        android:checked="true"
+        />
+    <item
+        android:id="@+id/benchmark_inserts_no_transactions"
+        android:title="@string/insert_performance_no_transactions"
+        android:checkable="true"
+        android:checked="false"
+        />
+    <item
+        android:id="@+id/benchmark_inserts_transactions"
+        android:title="@string/insert_performance_transactions_only"
+        android:checkable="true"
+        android:checked="false"
+        />
+    <item
+        android:id="@+id/benchmark_inserts_batch"
+        android:title="@string/insert_performance_batch_only"
+        android:checkable="true"
+        android:checked="false"
+        />
+</menu>

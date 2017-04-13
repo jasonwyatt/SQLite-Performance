@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/run_test"
+        android:title="@string/run_tests_item_title"
+        android:icon="@drawable/ic_run_tests"
+        android:titleCondensed="@string/run_tests_item_title_condensed"
+        app:showAsAction="always"
+        android:showAsAction="always"
+        />
+</menu>
