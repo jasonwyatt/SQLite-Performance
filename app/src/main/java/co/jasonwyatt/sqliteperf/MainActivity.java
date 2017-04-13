@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import co.jasonwyatt.sqliteperf.inserts.BatchIntegerInsertsFragment;
 import co.jasonwyatt.sqliteperf.inserts.IntegerInsertsFragment;
 import co.jasonwyatt.sqliteperf.inserts.NoTransactionIntegerInsertsFragment;
+import co.jasonwyatt.sqliteperf.inserts.OneByOneIntegerInsertsFragment;
 import co.jasonwyatt.sqliteperf.inserts.TransactionIntegerInsertsFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -102,6 +103,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         } else if (item.getItemId() == R.id.benchmark_inserts_batch) {
             showFragment(BatchIntegerInsertsFragment.class);
+            return true;
+        } else if (item.getItemId() == R.id.benchmark_inserts_one_by_one) {
+            showFragment(OneByOneIntegerInsertsFragment.class);
             return true;
         }
         return false;

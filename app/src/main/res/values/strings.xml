@@ -11,4 +11,5 @@
     <string name="insert_performance_transactions_only">Inserts (Transactions)</string>
     <string name="insert_performance_no_transactions">Inserts (No Transactions)</string>
     <string name="insert_performance_batch_only">Inserts (Batch)</string>
+    <string name="insert_performance_one_by_one">Inserts (1 at a Time)</string>
 </resources>

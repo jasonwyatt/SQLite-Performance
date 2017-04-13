@@ -20,6 +20,12 @@
         android:checked="false"
         />
     <item
+        android:id="@+id/benchmark_inserts_one_by_one"
+        android:title="@string/insert_performance_one_by_one"
+        android:checkable="true"
+        android:checked="false"
+        />
+    <item
         android:id="@+id/benchmark_inserts_batch"
         android:title="@string/insert_performance_batch_only"
         android:checkable="true"
