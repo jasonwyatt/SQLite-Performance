@@ -1,7 +1,6 @@
-package co.jasonwyatt.sqliteperf.inserts;
+package co.jasonwyatt.sqliteperf.inserts.integers;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -9,6 +8,7 @@ import java.util.Random;
 
 import co.jasonwyatt.sqliteperf.App;
 import co.jasonwyatt.sqliteperf.TestCase;
+import co.jasonwyatt.sqliteperf.inserts.DbHelper;
 
 /**
  * @author jason
@@ -42,8 +42,6 @@ public class IntegerInsertsTransactionCase implements TestCase {
         db.beginTransaction();
         ContentValues values = new ContentValues(1);
         for (int i = 0; i < mInsertions; i++) {
-            values.clear();
-
             values.put("val", mRandom.nextInt());
             db.insert("inserts_1", null, values);
         }

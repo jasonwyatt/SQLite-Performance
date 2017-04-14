@@ -1,7 +1,10 @@
 package co.jasonwyatt.sqliteperf;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.os.PowerManager;
 import android.support.v4.graphics.ColorUtils;
+import android.view.WindowManager;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;

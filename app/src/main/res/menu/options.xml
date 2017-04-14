@@ -8,26 +8,20 @@
         android:checked="true"
         />
     <item
-        android:id="@+id/benchmark_inserts_no_transactions"
-        android:title="@string/insert_performance_no_transactions"
+        android:id="@+id/benchmark_inserts_with_insert"
+        android:title="@string/insert_performance_with_insert"
         android:checkable="true"
         android:checked="false"
         />
     <item
-        android:id="@+id/benchmark_inserts_transactions"
-        android:title="@string/insert_performance_transactions_only"
+        android:id="@+id/benchmark_inserts_insert_vs_execsql"
+        android:title="@string/insert_performance_insert_vs_execsql"
         android:checkable="true"
         android:checked="false"
         />
     <item
-        android:id="@+id/benchmark_inserts_one_by_one"
-        android:title="@string/insert_performance_one_by_one"
-        android:checkable="true"
-        android:checked="false"
-        />
-    <item
-        android:id="@+id/benchmark_inserts_batch"
-        android:title="@string/insert_performance_batch_only"
+        android:id="@+id/benchmark_inserts_one_by_one_vs_batched"
+        android:title="@string/insert_performance_one_by_one_vs_batched"
         android:checkable="true"
         android:checked="false"
         />

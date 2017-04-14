@@ -1,4 +1,4 @@
-package co.jasonwyatt.sqliteperf.inserts;
+package co.jasonwyatt.sqliteperf.inserts.integers;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -7,19 +7,20 @@ import java.util.Random;
 
 import co.jasonwyatt.sqliteperf.App;
 import co.jasonwyatt.sqliteperf.TestCase;
+import co.jasonwyatt.sqliteperf.inserts.DbHelper;
 
 /**
  * @author jason
  */
 
-public class IntegerInsertsRawBatchTransactionCase implements TestCase {
+public class IntegerInsertsRawBatchCase implements TestCase {
     private final DbHelper mDbHelper;
     private final Random mRandom;
     private final int mInsertions;
     private final int mTestSizeIndex;
 
-    public IntegerInsertsRawBatchTransactionCase(int insertions, int testSizeIndex) {
-        mDbHelper = new DbHelper(App.getInstance(), IntegerInsertsRawBatchTransactionCase.class.getSimpleName());
+    public IntegerInsertsRawBatchCase(int insertions, int testSizeIndex) {
+        mDbHelper = new DbHelper(App.getInstance(), IntegerInsertsRawBatchCase.class.getSimpleName());
         mRandom = new Random(System.currentTimeMillis());
         mInsertions = insertions;
         mTestSizeIndex = testSizeIndex;
@@ -38,10 +39,7 @@ public class IntegerInsertsRawBatchTransactionCase implements TestCase {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
         result.started();
 
-        db.beginTransaction();
         doInsertions(db, mInsertions);
-        db.setTransactionSuccessful();
-        db.endTransaction();
 
         result.finished();
         return result;

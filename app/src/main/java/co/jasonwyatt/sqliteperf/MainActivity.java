@@ -14,14 +14,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import co.jasonwyatt.sqliteperf.inserts.BatchIntegerInsertsFragment;
+import co.jasonwyatt.sqliteperf.inserts.ExecSQLVsBatchedFragment;
+import co.jasonwyatt.sqliteperf.inserts.InsertsFragment;
+import co.jasonwyatt.sqliteperf.inserts.InsertsVsExecSQLFragment;
 import co.jasonwyatt.sqliteperf.inserts.IntegerInsertsFragment;
-import co.jasonwyatt.sqliteperf.inserts.NoTransactionIntegerInsertsFragment;
-import co.jasonwyatt.sqliteperf.inserts.OneByOneIntegerInsertsFragment;
-import co.jasonwyatt.sqliteperf.inserts.TransactionIntegerInsertsFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.drawer_container)
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mNavigation.setNavigationItemSelectedListener(this);
 
         showFragment(IntegerInsertsFragment.class);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
@@ -95,17 +97,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (item.getItemId() == R.id.benchmark_inserts) {
             showFragment(IntegerInsertsFragment.class);
             return true;
-        } else if (item.getItemId() == R.id.benchmark_inserts_no_transactions) {
-            showFragment(NoTransactionIntegerInsertsFragment.class);
+        } else if (item.getItemId() == R.id.benchmark_inserts_with_insert) {
+            showFragment(InsertsFragment.class);
             return true;
-        } else if (item.getItemId() == R.id.benchmark_inserts_transactions) {
-            showFragment(TransactionIntegerInsertsFragment.class);
+        } else if (item.getItemId() == R.id.benchmark_inserts_insert_vs_execsql) {
+            showFragment(InsertsVsExecSQLFragment.class);
             return true;
-        } else if (item.getItemId() == R.id.benchmark_inserts_batch) {
-            showFragment(BatchIntegerInsertsFragment.class);
-            return true;
-        } else if (item.getItemId() == R.id.benchmark_inserts_one_by_one) {
-            showFragment(OneByOneIntegerInsertsFragment.class);
+        } else if (item.getItemId() == R.id.benchmark_inserts_one_by_one_vs_batched) {
+            showFragment(ExecSQLVsBatchedFragment.class);
             return true;
         }
         return false;
