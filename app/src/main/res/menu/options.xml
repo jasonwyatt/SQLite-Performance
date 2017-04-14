@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item
-        android:id="@+id/benchmark_inserts"
-        android:title="@string/insert_performance"
-        android:checkable="true"
-        android:checked="true"
-        />
     <item
         android:id="@+id/benchmark_inserts_with_insert"
         android:title="@string/insert_performance_with_insert"

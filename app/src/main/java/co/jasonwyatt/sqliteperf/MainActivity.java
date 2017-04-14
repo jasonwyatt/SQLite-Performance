@@ -21,7 +21,6 @@ import butterknife.ButterKnife;
 import co.jasonwyatt.sqliteperf.inserts.ExecSQLVsBatchedFragment;
 import co.jasonwyatt.sqliteperf.inserts.InsertsFragment;
 import co.jasonwyatt.sqliteperf.inserts.InsertsVsExecSQLFragment;
-import co.jasonwyatt.sqliteperf.inserts.IntegerInsertsFragment;
 import co.jasonwyatt.sqliteperf.inserts.SimpleExecSQLVsSQLiteStatementFragment;
 import co.jasonwyatt.sqliteperf.inserts.TracksExecSQLVsSQLiteStatementFragment;
 
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mNavigation.setNavigationItemSelectedListener(this);
 
-        showFragment(IntegerInsertsFragment.class);
+        showFragment(InsertsFragment.class);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
@@ -96,10 +95,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         mDrawerLayout.closeDrawers();
 
-        if (item.getItemId() == R.id.benchmark_inserts) {
-            showFragment(IntegerInsertsFragment.class);
-            return true;
-        } else if (item.getItemId() == R.id.benchmark_inserts_with_insert) {
+        if (item.getItemId() == R.id.benchmark_inserts_with_insert) {
             showFragment(InsertsFragment.class);
             return true;
         } else if (item.getItemId() == R.id.benchmark_inserts_insert_vs_execsql) {

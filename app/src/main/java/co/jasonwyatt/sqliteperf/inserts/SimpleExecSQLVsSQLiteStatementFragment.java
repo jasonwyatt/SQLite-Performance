@@ -28,13 +28,8 @@ public class SimpleExecSQLVsSQLiteStatementFragment extends TestSuiteFragment {
     @Override
     protected Map<TestScenarioMetadata, TestCase[]> getTestScenarios() {
         Map<TestScenarioMetadata, TestCase[]> result = new HashMap<>(4);
-        result.put(new TestScenarioMetadata("simple execSQL", 0xFFb71c1c, 10), new TestCase[]{
-                new IntegerInsertsRawTransactionCase(1000, 2),
-                new IntegerInsertsRawTransactionCase(10000, 3),
-                new IntegerInsertsRawTransactionCase(100000, 4)
-        });
 
-        result.put(new TestScenarioMetadata("simple batched execSQL", 0xFFf05545, 10), new TestCase[]{
+        result.put(new TestScenarioMetadata("simple batched execSQL", 0xFFb71c1c, 10), new TestCase[]{
                 new IntegerInsertsRawBatchTransactionCase(1000, 2),
                 new IntegerInsertsRawBatchTransactionCase(10000, 3),
                 new IntegerInsertsRawBatchTransactionCase(100000, 4)

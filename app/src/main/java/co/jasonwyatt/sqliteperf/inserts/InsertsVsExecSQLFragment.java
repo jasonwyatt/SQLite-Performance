@@ -29,25 +29,25 @@ public class InsertsVsExecSQLFragment extends TestSuiteFragment {
     protected Map<TestScenarioMetadata, TestCase[]> getTestScenarios() {
         Map<TestScenarioMetadata, TestCase[]> result = new HashMap<>(4);
 
-        result.put(new TestScenarioMetadata("simple db.insert()", 0xFFb71c1c, 1), new TestCase[]{
+        result.put(new TestScenarioMetadata("simple db.insert()", 0xFFb71c1c, 10), new TestCase[]{
                 new IntegerInsertsTransactionCase(1000, 2),
                 new IntegerInsertsTransactionCase(10000, 3),
                 new IntegerInsertsTransactionCase(100000, 4)
         });
 
-        result.put(new TestScenarioMetadata("simple db.execSQL()", 0xFFf05545, 1), new TestCase[]{
+        result.put(new TestScenarioMetadata("simple db.execSQL()", 0xFFf05545, 10), new TestCase[]{
                 new IntegerInsertsRawTransactionCase(1000, 2),
                 new IntegerInsertsRawTransactionCase(10000, 3),
                 new IntegerInsertsRawTransactionCase(100000, 4)
         });
 
-        result.put(new TestScenarioMetadata("tracks db.insert()", 0xFF4a148c, 1), new TestCase[] {
+        result.put(new TestScenarioMetadata("tracks db.insert()", 0xFF4a148c, 10), new TestCase[] {
                 new InsertsTransactionTestCase(1000, 2),
                 new InsertsTransactionTestCase(10000, 3),
                 new InsertsTransactionTestCase(100000, 4)
         });
 
-        result.put(new TestScenarioMetadata("tracks db.execSQL()", 0xFF7c43bd, 1), new TestCase[] {
+        result.put(new TestScenarioMetadata("tracks db.execSQL()", 0xFF7c43bd, 10), new TestCase[] {
                 new RawTestCase(1000, 2),
                 new RawTestCase(10000, 3),
                 new RawTestCase(100000, 4)

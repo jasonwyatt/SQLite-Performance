@@ -26,25 +26,20 @@ public class TracksExecSQLVsSQLiteStatementFragment extends TestSuiteFragment {
     @Override
     protected Map<TestScenarioMetadata, TestCase[]> getTestScenarios() {
         Map<TestScenarioMetadata, TestCase[]> result = new HashMap<>(4);
-        result.put(new TestScenarioMetadata("tracks execSQL", 0xFFb71c1c, 1), new TestCase[]{
-                new RawTestCase(1000, 2),
-                new RawTestCase(10000, 3),
-                new RawTestCase(100000, 4)
-        });
 
-        result.put(new TestScenarioMetadata("tracks batched execSQL", 0xFFf05545, 1), new TestCase[]{
+        result.put(new TestScenarioMetadata("tracks batched execSQL", 0xFFb71c1c, 10), new TestCase[]{
                 new BatchedTestCase(1000, 2),
                 new BatchedTestCase(10000, 3),
                 new BatchedTestCase(100000, 4)
         });
 
-        result.put(new TestScenarioMetadata("tracks SQLiteStatement", 0xFF4a148c, 1), new TestCase[]{
+        result.put(new TestScenarioMetadata("tracks SQLiteStatement", 0xFF4a148c, 10), new TestCase[]{
                 new SQLiteStatementTestCase(1000, 2),
                 new SQLiteStatementTestCase(10000, 3),
                 new SQLiteStatementTestCase(100000, 4)
         });
 
-        result.put(new TestScenarioMetadata("tracks batched SQLiteStatement", 0xFF7c43bd, 1), new TestCase[] {
+        result.put(new TestScenarioMetadata("tracks batched SQLiteStatement", 0xFF7c43bd, 10), new TestCase[] {
                 new BatchedSQLiteStatementTestCase(1000, 2),
                 new BatchedSQLiteStatementTestCase(10000, 3),
                 new BatchedSQLiteStatementTestCase(100000, 4)

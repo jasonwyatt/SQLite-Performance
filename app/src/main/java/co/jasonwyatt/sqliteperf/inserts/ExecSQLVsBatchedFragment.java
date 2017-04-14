@@ -29,25 +29,25 @@ public class ExecSQLVsBatchedFragment extends TestSuiteFragment {
     protected Map<TestScenarioMetadata, TestCase[]> getTestScenarios() {
         Map<TestScenarioMetadata, TestCase[]> result = new HashMap<>(4);
 
-        result.put(new TestScenarioMetadata("simple one-by-one exec", 0xFFb71c1c, 1), new TestCase[]{
+        result.put(new TestScenarioMetadata("simple one-by-one exec", 0xFFb71c1c, 10), new TestCase[]{
                 new IntegerInsertsRawTransactionCase(1000, 2),
                 new IntegerInsertsRawTransactionCase(10000, 3),
                 new IntegerInsertsRawTransactionCase(100000, 4)
         });
 
-        result.put(new TestScenarioMetadata("simple batched exec", 0xFFf05545, 1), new TestCase[]{
+        result.put(new TestScenarioMetadata("simple batched exec", 0xFFf05545, 20), new TestCase[]{
                 new IntegerInsertsRawBatchTransactionCase(1000, 2),
                 new IntegerInsertsRawBatchTransactionCase(10000, 3),
                 new IntegerInsertsRawBatchTransactionCase(100000, 4)
         });
 
-        result.put(new TestScenarioMetadata("tracks one-by-one exec", 0xFF4a148c, 1), new TestCase[] {
+        result.put(new TestScenarioMetadata("tracks one-by-one exec", 0xFF4a148c, 10), new TestCase[] {
                 new RawTestCase(1000, 2),
                 new RawTestCase(10000, 3),
                 new RawTestCase(100000, 4)
         });
 
-        result.put(new TestScenarioMetadata("tracks batched exec", 0xFF7c43bd, 1), new TestCase[] {
+        result.put(new TestScenarioMetadata("tracks batched exec", 0xFF7c43bd, 20), new TestCase[] {
                 new BatchedTestCase(1000, 2),
                 new BatchedTestCase(10000, 3),
                 new BatchedTestCase(100000, 4)
