@@ -14,13 +14,12 @@ import co.jasonwyatt.sqliteperf.inserts.DbHelper;
  */
 
 public class IntegerInsertsRawBatchCase implements TestCase {
-    private final DbHelper mDbHelper;
+    private DbHelper mDbHelper;
     private final Random mRandom;
     private final int mInsertions;
     private final int mTestSizeIndex;
 
     public IntegerInsertsRawBatchCase(int insertions, int testSizeIndex) {
-        mDbHelper = new DbHelper(App.getInstance(), IntegerInsertsRawBatchCase.class.getSimpleName());
         mRandom = new Random(System.currentTimeMillis());
         mInsertions = insertions;
         mTestSizeIndex = testSizeIndex;
@@ -28,13 +27,13 @@ public class IntegerInsertsRawBatchCase implements TestCase {
 
     @Override
     public void resetCase() {
-        Log.d(getClass().getSimpleName(), "Clearing for "+mInsertions+" insertions");
         mDbHelper.getWritableDatabase().execSQL("delete from inserts_1");
+        mDbHelper.close();
     }
 
     @Override
     public Metrics runCase() {
-        Log.d(getClass().getSimpleName(), "Beginning "+mInsertions+" insertions");
+        mDbHelper = new DbHelper(App.getInstance(), IntegerInsertsRawBatchCase.class.getSimpleName());
         Metrics result = new Metrics(getClass().getSimpleName()+" ("+mInsertions+" insertions)", mTestSizeIndex);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
         result.started();

@@ -22,6 +22,8 @@ import co.jasonwyatt.sqliteperf.inserts.ExecSQLVsBatchedFragment;
 import co.jasonwyatt.sqliteperf.inserts.InsertsFragment;
 import co.jasonwyatt.sqliteperf.inserts.InsertsVsExecSQLFragment;
 import co.jasonwyatt.sqliteperf.inserts.IntegerInsertsFragment;
+import co.jasonwyatt.sqliteperf.inserts.SimpleExecSQLVsSQLiteStatementFragment;
+import co.jasonwyatt.sqliteperf.inserts.TracksExecSQLVsSQLiteStatementFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.drawer_container)
@@ -105,6 +107,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         } else if (item.getItemId() == R.id.benchmark_inserts_one_by_one_vs_batched) {
             showFragment(ExecSQLVsBatchedFragment.class);
+            return true;
+        } else if (item.getItemId() == R.id.benchmark_inserts_batched_vs_sqlitestatement_simple) {
+            showFragment(SimpleExecSQLVsSQLiteStatementFragment.class);
+            return true;
+        } else if (item.getItemId() == R.id.benchmark_inserts_batched_vs_sqlitestatement_tracks) {
+            showFragment(TracksExecSQLVsSQLiteStatementFragment.class);
             return true;
         }
         return false;

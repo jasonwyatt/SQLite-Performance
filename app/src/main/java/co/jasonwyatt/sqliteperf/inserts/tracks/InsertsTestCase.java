@@ -15,13 +15,12 @@ import co.jasonwyatt.sqliteperf.inserts.DbHelper;
  */
 
 public class InsertsTestCase implements TestCase {
-    private final DbHelper mDbHelper;
+    private DbHelper mDbHelper;
     private final Random mRandom;
     private final int mInsertions;
     private final int mTestSizeIndex;
 
     public InsertsTestCase(int insertions, int testSizeIndex) {
-        mDbHelper = new DbHelper(App.getInstance(), getClass().getName());
         mRandom = new Random(System.currentTimeMillis());
         mInsertions = insertions;
         mTestSizeIndex = testSizeIndex;
@@ -30,10 +29,12 @@ public class InsertsTestCase implements TestCase {
     @Override
     public void resetCase() {
         mDbHelper.getWritableDatabase().execSQL("delete from tracks");
+        mDbHelper.close();
     }
 
     @Override
     public Metrics runCase() {
+        mDbHelper = new DbHelper(App.getInstance(), getClass().getName());
         Metrics result = new Metrics(getClass().getSimpleName()+" ("+mInsertions+" insertions)", mTestSizeIndex);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 

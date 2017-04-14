@@ -25,4 +25,16 @@
         android:checkable="true"
         android:checked="false"
         />
+    <item
+        android:id="@+id/benchmark_inserts_batched_vs_sqlitestatement_simple"
+        android:title="@string/insert_performance_batched_vs_sqlitestatement_simple"
+        android:checkable="true"
+        android:checked="false"
+        />
+    <item
+        android:id="@+id/benchmark_inserts_batched_vs_sqlitestatement_tracks"
+        android:title="@string/insert_performance_batched_vs_sqlitestatement_tracks"
+        android:checkable="true"
+        android:checked="false"
+        />
 </menu>

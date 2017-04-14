@@ -1,7 +1,7 @@
 package co.jasonwyatt.sqliteperf.inserts.integers;
 
-import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import java.util.Random;
@@ -14,13 +14,13 @@ import co.jasonwyatt.sqliteperf.inserts.DbHelper;
  * @author jason
  */
 
-public class IntegerInsertsTransactionCase implements TestCase {
+public class IntegerSQLiteStatementTransactionCase implements TestCase {
     private DbHelper mDbHelper;
     private final Random mRandom;
     private final int mInsertions;
     private final int mTestSizeIndex;
 
-    public IntegerInsertsTransactionCase(int insertions, int testSizeIndex) {
+    public IntegerSQLiteStatementTransactionCase(int insertions, int testSizeIndex) {
         mRandom = new Random(System.currentTimeMillis());
         mInsertions = insertions;
         mTestSizeIndex = testSizeIndex;
@@ -34,15 +34,17 @@ public class IntegerInsertsTransactionCase implements TestCase {
 
     @Override
     public Metrics runCase() {
-        mDbHelper = new DbHelper(App.getInstance(), IntegerInsertsTransactionCase.class.getSimpleName());
+        mDbHelper = new DbHelper(App.getInstance(), IntegerSQLiteStatementTransactionCase.class.getSimpleName());
         Metrics result = new Metrics(getClass().getSimpleName()+" ("+mInsertions+" insertions)", mTestSizeIndex);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
+
         result.started();
+        SQLiteStatement stmt = db.compileStatement("INSERT INTO inserts_1 (val) VALUES (?)");
         db.beginTransaction();
-        ContentValues values = new ContentValues(1);
         for (int i = 0; i < mInsertions; i++) {
-            values.put("val", mRandom.nextInt());
-            db.insert("inserts_1", null, values);
+            stmt.bindLong(1, mRandom.nextInt());
+            stmt.executeInsert();
+            stmt.clearBindings();
         }
         db.setTransactionSuccessful();
         db.endTransaction();

@@ -16,4 +16,6 @@
     <string name="insert_performance_with_insert">Inserts with db.insert()</string>
     <string name="insert_performance_insert_vs_execsql">insert() vs execSQL()</string>
     <string name="insert_performance_one_by_one_vs_batched">execSQL: 1x1 vs batched</string>
+    <string name="insert_performance_batched_vs_sqlitestatement_simple">execSQL vs. SQLiteStatement (simple)</string>
+    <string name="insert_performance_batched_vs_sqlitestatement_tracks">execSQL vs. SQLiteStatement (tracks)</string>
 </resources>

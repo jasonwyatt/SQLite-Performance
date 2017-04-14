@@ -81,7 +81,7 @@ public abstract class TestSuiteFragment extends Fragment {
             TestScenarioMetadata d = scenario.getKey();
 
             TestCaseRunner r = new TestCaseRunner(d.iterations, mChart, d.title, d.color, formatter);
-            r.executeOnExecutor(TestCaseRunner.THREAD_POOL_EXECUTOR, scenario.getValue());
+            r.executeOnExecutor(TestCaseRunner.SERIAL_EXECUTOR, scenario.getValue());
             mRunners.add(r);
         }
     }

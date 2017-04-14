@@ -1,7 +1,7 @@
 package co.jasonwyatt.sqliteperf.inserts.tracks;
 
-import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 
 import java.nio.charset.Charset;
 import java.util.Random;
@@ -14,14 +14,13 @@ import co.jasonwyatt.sqliteperf.inserts.DbHelper;
  * @author jason
  */
 
-public class RawTestCase implements TestCase {
+public class SQLiteStatementTestCase implements TestCase {
     private DbHelper mDbHelper;
     private final Random mRandom;
     private final int mInsertions;
     private final int mTestSizeIndex;
 
-    public RawTestCase(int insertions, int testSizeIndex) {
-        mDbHelper = new DbHelper(App.getInstance(), getClass().getName());
+    public SQLiteStatementTestCase(int insertions, int testSizeIndex) {
         mRandom = new Random(System.currentTimeMillis());
         mInsertions = insertions;
         mTestSizeIndex = testSizeIndex;
@@ -48,24 +47,25 @@ public class RawTestCase implements TestCase {
 
         result.started();
         db.beginTransaction();
-        Object[] values = new Object[9];
+        SQLiteStatement stmt = db.compileStatement("INSERT INTO tracks (id, title, band_id, duration, url, lyrics, about, release_date, mod_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         for (int i = 0; i < mInsertions; i++) {
             mRandom.nextBytes(titleByteArry);
             mRandom.nextBytes(urlByteArray);
             mRandom.nextBytes(lyricsByteArray);
             mRandom.nextBytes(aboutByteArray);
 
-            values[0] = i;
-            values[1] = new String(titleByteArry, ascii);
-            values[2] = mRandom.nextInt();
-            values[3] = mRandom.nextDouble();
-            values[4] = new String(urlByteArray, ascii);
-            values[5] = new String(lyricsByteArray, ascii);
-            values[6] = new String(aboutByteArray, ascii);
-            values[7] = mRandom.nextLong();
-            values[8] = mRandom.nextLong();
+            stmt.bindLong(1, i);
+            stmt.bindString(2, new String(titleByteArry, ascii));
+            stmt.bindLong(3, mRandom.nextInt());
+            stmt.bindDouble(4, mRandom.nextDouble());
+            stmt.bindString(5, new String(urlByteArray, ascii));
+            stmt.bindString(6, new String(lyricsByteArray, ascii));
+            stmt.bindString(7, new String(aboutByteArray, ascii));
+            stmt.bindLong(8, mRandom.nextLong());
+            stmt.bindLong(9, mRandom.nextLong());
 
-            db.execSQL("INSERT INTO tracks (id, title, band_id, duration, url, lyrics, about, release_date, mod_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", values);
+            stmt.executeInsert();
+            stmt.clearBindings();
         }
         db.setTransactionSuccessful();
         db.endTransaction();
