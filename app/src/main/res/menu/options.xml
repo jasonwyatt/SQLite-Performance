@@ -30,4 +30,28 @@
         android:checkable="true"
         android:checked="false"
         />
+    <item
+        android:id="@+id/benchmark_inserts_sqlitestatement_vs_room"
+        android:title="@string/insert_performance_sqlitestatement_vs_room"
+        android:checkable="true"
+        android:checked="false"
+        />
+    <item
+        android:id="@+id/benchmark_inserts_batched_vs_room"
+        android:title="@string/insert_performance_batched_vs_room"
+        android:checkable="true"
+        android:checked="false"
+        />
+    <item
+        android:id="@+id/benchmark_inserts_batched_sqlitestatement_vs_room"
+        android:title="@string/insert_performance_batched_sqlitestatement_vs_room"
+        android:checkable="true"
+        android:checked="false"
+        />
+    <item
+        android:id="@+id/benchmark_select_blob_performance_50k"
+        android:title="@string/select_blob_performance_50k"
+        android:checkable="true"
+        android:checked="false"
+        />
 </menu>

@@ -18,9 +18,13 @@ import android.view.WindowManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.jasonwyatt.sqliteperf.blobs.SelectsFragment;
+import co.jasonwyatt.sqliteperf.inserts.BatchedSQLiteStatementVsRoomInsertAllFragment;
+import co.jasonwyatt.sqliteperf.inserts.BatchedVsRoomInsertAllFragment;
 import co.jasonwyatt.sqliteperf.inserts.ExecSQLVsBatchedFragment;
 import co.jasonwyatt.sqliteperf.inserts.InsertsFragment;
 import co.jasonwyatt.sqliteperf.inserts.InsertsVsExecSQLFragment;
+import co.jasonwyatt.sqliteperf.inserts.SQLiteStatementVsRoomInsertAllFragment;
 import co.jasonwyatt.sqliteperf.inserts.SimpleExecSQLVsSQLiteStatementFragment;
 import co.jasonwyatt.sqliteperf.inserts.TracksExecSQLVsSQLiteStatementFragment;
 
@@ -109,6 +113,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         } else if (item.getItemId() == R.id.benchmark_inserts_batched_vs_sqlitestatement_tracks) {
             showFragment(TracksExecSQLVsSQLiteStatementFragment.class);
+            return true;
+        } else if (item.getItemId() == R.id.benchmark_inserts_sqlitestatement_vs_room) {
+            showFragment(SQLiteStatementVsRoomInsertAllFragment.class);
+            return true;
+        } else if (item.getItemId() == R.id.benchmark_inserts_batched_vs_room) {
+            showFragment(BatchedVsRoomInsertAllFragment.class);
+            return true;
+        } else if (item.getItemId() == R.id.benchmark_inserts_batched_sqlitestatement_vs_room) {
+            showFragment(BatchedSQLiteStatementVsRoomInsertAllFragment.class);
+            return true;
+        } else if (item.getItemId() == R.id.benchmark_select_blob_performance_50k) {
+            showFragment(SelectsFragment.class);
             return true;
         }
         return false;

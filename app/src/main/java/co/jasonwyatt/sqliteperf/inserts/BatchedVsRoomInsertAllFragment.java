@@ -9,48 +9,48 @@ import co.jasonwyatt.sqliteperf.R;
 import co.jasonwyatt.sqliteperf.TestCase;
 import co.jasonwyatt.sqliteperf.TestSuiteFragment;
 import co.jasonwyatt.sqliteperf.inserts.integers.IntegerInsertsRawBatchTransactionCase;
-import co.jasonwyatt.sqliteperf.inserts.integers.IntegerInsertsRawTransactionCase;
-import co.jasonwyatt.sqliteperf.inserts.integers.IntegerInsertsTransactionCase;
+import co.jasonwyatt.sqliteperf.inserts.integers.IntegerRoomTestCase;
+import co.jasonwyatt.sqliteperf.inserts.integers.IntegerSQLiteStatementTransactionCase;
 import co.jasonwyatt.sqliteperf.inserts.tracks.BatchedTestCase;
-import co.jasonwyatt.sqliteperf.inserts.tracks.InsertsTransactionTestCase;
-import co.jasonwyatt.sqliteperf.inserts.tracks.RawTestCase;
+import co.jasonwyatt.sqliteperf.inserts.tracks.SQLiteStatementTestCase;
+import co.jasonwyatt.sqliteperf.inserts.tracks.TracksRoomTestCase;
 
 /**
  * @author jason
  */
 
-public class ExecSQLVsBatchedFragment extends TestSuiteFragment {
+public class BatchedVsRoomInsertAllFragment extends TestSuiteFragment {
     @Override
     protected String getChartTitle() {
-        return App.getInstance().getString(R.string.insert_performance_one_by_one_vs_batched);
+        return App.getInstance().getString(R.string.insert_performance_batched_vs_room);
     }
 
     @Override
     protected Map<TestScenarioMetadata, TestCase[]> getTestScenarios() {
         Map<TestScenarioMetadata, TestCase[]> result = new HashMap<>(4);
 
-        result.put(new TestScenarioMetadata("simple one-by-one exec", 0xFFb71c1c, 10), new TestCase[]{
-                new IntegerInsertsRawTransactionCase(1000, 2),
-                new IntegerInsertsRawTransactionCase(10000, 3),
-                new IntegerInsertsRawTransactionCase(100000, 4)
-        });
-
-        result.put(new TestScenarioMetadata("simple batched exec", 0xFFf05545, 20), new TestCase[]{
+        result.put(new TestScenarioMetadata("simple batched exec", 0xFFb71c1c, 3), new TestCase[]{
                 new IntegerInsertsRawBatchTransactionCase(1000, 2),
                 new IntegerInsertsRawBatchTransactionCase(10000, 3),
                 new IntegerInsertsRawBatchTransactionCase(100000, 4)
         });
 
-        result.put(new TestScenarioMetadata("tracks one-by-one exec", 0xFF4a148c, 10), new TestCase[] {
-                new RawTestCase(1000, 2),
-                new RawTestCase(10000, 3),
-                new RawTestCase(100000, 4)
+        result.put(new TestScenarioMetadata("simple Room insertAll", 0xFFf05545, 3), new TestCase[]{
+                new IntegerRoomTestCase(1000, 2),
+                new IntegerRoomTestCase(10000, 3),
+                new IntegerRoomTestCase(100000, 4)
         });
 
-        result.put(new TestScenarioMetadata("tracks batched exec", 0xFF7c43bd, 20), new TestCase[] {
+        result.put(new TestScenarioMetadata("tracks batched exec", 0xFF4a148c, 2), new TestCase[] {
                 new BatchedTestCase(1000, 2),
                 new BatchedTestCase(10000, 3),
                 new BatchedTestCase(100000, 4)
+        });
+
+        result.put(new TestScenarioMetadata("tracks Room insertAll", 0xFF7c43bd, 2), new TestCase[] {
+                new TracksRoomTestCase(1000, 2),
+                new TracksRoomTestCase(10000, 3),
+                new TracksRoomTestCase(100000, 4)
         });
 
         return result;

@@ -28,6 +28,7 @@ public class BatchedTestCase implements TestCase {
 
     @Override
     public void resetCase() {
+        mDbHelper = new DbHelper(App.getInstance(), getClass().getName());
         mDbHelper.getWritableDatabase().execSQL("delete from tracks");
         mDbHelper.close();
     }

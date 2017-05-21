@@ -18,4 +18,8 @@
     <string name="insert_performance_one_by_one_vs_batched">execSQL: 1x1 vs batched</string>
     <string name="insert_performance_batched_vs_sqlitestatement_simple">execSQL vs. SQLiteStatement (simple)</string>
     <string name="insert_performance_batched_vs_sqlitestatement_tracks">execSQL vs. SQLiteStatement (tracks)</string>
+    <string name="insert_performance_sqlitestatement_vs_room">SQLiteStatement vs. Room DAO</string>
+    <string name="insert_performance_batched_sqlitestatement_vs_room">Batched SQLiteStatement vs. Room DAO</string>
+    <string name="insert_performance_batched_vs_room">Batched vs. Room DAO</string>
+    <string name="select_blob_performance_50k">SELECT blob data: 50kb</string>
 </resources>

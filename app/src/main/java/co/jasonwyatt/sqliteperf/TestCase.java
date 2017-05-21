@@ -35,11 +35,11 @@ public interface TestCase {
         }
 
         public void started() {
-            mStartTime = System.currentTimeMillis();
+            mStartTime = System.nanoTime();
         }
 
         public void finished() {
-            mEndTime = System.currentTimeMillis();
+            mEndTime = System.nanoTime();
             mElapsedTime = mEndTime - mStartTime;
         }
 
@@ -54,7 +54,7 @@ public interface TestCase {
             } else {
                 sb.append("took ");
             }
-            sb.append(((float) mElapsedTime / mIterations) / 1000f);
+            sb.append(((float) mElapsedTime / mIterations) / 1000000f);
             sb.append(" seconds");
             return sb.toString();
         }

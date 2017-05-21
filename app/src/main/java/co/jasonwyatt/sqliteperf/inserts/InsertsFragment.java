@@ -64,7 +64,7 @@ public class InsertsFragment extends TestSuiteFragment {
 
             @Override
             public String elapsedTimeValueForDisplay(float elapsedTimeMs) {
-                return String.format(Locale.ENGLISH, "%.3fs", elapsedTimeMs / 1000f);
+                return String.format(Locale.ENGLISH, "%.3fs", elapsedTimeMs / 1e9f);
             }
         };
     }

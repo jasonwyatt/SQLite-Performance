@@ -30,4 +30,7 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    compile "android.arch.persistence.room:runtime:1.0.0-alpha1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha1"
 }
